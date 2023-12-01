@@ -607,6 +607,7 @@ function readCredentialFile(filePath: string, ignoreMissing?: boolean): {[key: s
   try {
     fileText = fs.readFileSync(filePath, 'utf8');
   } catch (error) {
+    console.log(error, 'one')
     if (ignoreMissing) {
       return null;
     }
@@ -620,6 +621,7 @@ function readCredentialFile(filePath: string, ignoreMissing?: boolean): {[key: s
   try {
     return JSON.parse(fileText);
   } catch (error) {
+    console.log(error, 'two')
     throw new FirebaseAppError(
       AppErrorCodes.INVALID_CREDENTIAL,
       'Failed to parse contents of the credentials file as an object: ' + error,
